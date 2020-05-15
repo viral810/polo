@@ -17,7 +17,6 @@ module Polo
       unprepared_statement do
         ActiveSupport::Notifications.subscribed(collector, 'sql.active_record') do
           base_finder = @base_class.includes(@dependency_tree).where(@base_class.primary_key => @id)
-          #collect_sql(klass: @base_class, sql: base_finder.to_sql)
           base_finder.to_a
         end
       end
